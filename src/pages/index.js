@@ -2,17 +2,16 @@
 import Head from "next/head";
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
+import { getBitcoinData } from "../utils/api";
 
-export default function Home() {
+export default function Home({ bitcoinData }) {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    const data = [
-      { date: new Date("2022-01-01"), price: 30000 },
-      { date: new Date("2022-01-02"), price: 32000 },
-      { date: new Date("2022-01-03"), price: 31000 },
-      // Add more data points here
-    ];
+    const data = bitcoinData.map((d) => ({
+      date: new Date(d.date),
+      price: d.price,
+    }));
 
     const margin = { top: 20, right: 20, bottom: 30, left: 50 };
     const width = 800 - margin.left - margin.right;
@@ -66,5 +65,14 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const bitcoinData = await getBitcoinData();
+  return {
+    props: {
+      bitcoinData,
+    },
+  };
 }
 
