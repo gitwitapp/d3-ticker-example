@@ -1,0 +1,23 @@
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.x-axis,
+.y-axis {
+  font-size: 12px;
+}
+
+.x-axis line,
+.y-axis line {
+  stroke: #ddd;
+  stroke-dasharray: 2;
+}
+
+.x-axis path,
+.y-axis path {
+  display: none;
+}
+
