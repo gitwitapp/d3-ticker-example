@@ -12,4 +12,6 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.## Line Chart Implementation
+
+Add a section explaining the line chart implementation
