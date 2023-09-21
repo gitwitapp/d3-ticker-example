@@ -7,13 +7,15 @@ export default function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1d&startTime=1640995200000");
+      const response = await fetch("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1");
       const data = await response.json();
-      const formattedData = data.map((d) => ({
-        date: new Date(d[0]),
-        price: parseFloat(d[4])
+      
+      // The data structure might be different, so adjust the code accordingly
+      const formattedData = data.prices.map((priceData) => ({
+        date: new Date(priceData[0]),
+        price: priceData[1]
       }));
-
+    
       const margin = { top: 20, right: 20, bottom: 30, left: 50 };
       const width = 800 - margin.left - margin.right;
       const height = 400 - margin.top - margin.bottom;
